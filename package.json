@@ -1,0 +1,34 @@
+{
+  "name": "@belkworks/linorialib",
+  "version": "0.0.1",
+  "main": "out/init.lua",
+  "types": "out/index.d.ts",
+  "scripts": {
+    "build": "rbxtsc --type=model && cpx \"include/**\" out/include && cpx \"node_modules/**/*.lua\" out/include/node_modules -L && tape out",
+    "clean": "rimraf out",
+    "prepack": "pnpm clean && rbxtsc"
+  },
+  "files": [
+    "out",
+    "!**/*.tsbuildinfo"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "devDependencies": {
+    "@rbxts/compiler-types": "2.0.4-types.1",
+    "@rbxts/types": "^1.0.654",
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
+    "cpx": "^1.5.0",
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-roblox-ts": "^0.0.35",
+    "prettier": "^2.8.1",
+    "rimraf": "^3.0.2",
+    "tape-lua": "3.1.1-a",
+    "typescript": "^4.9.4"
+  }
+}
