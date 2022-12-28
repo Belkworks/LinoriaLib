@@ -100,6 +100,7 @@ interface Tab {
 
 interface Window {
 	Tabs: Record<string, Tab>;
+	Holder: Frame;
 
 	SetWindowTitle(title: string): void;
 	AddTab(title: string): Tab;

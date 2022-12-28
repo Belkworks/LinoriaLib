@@ -2506,16 +2506,19 @@ function Library:CreateWindow(WindowTitle)
         Parent = ScreenGui;
     });
 
+    local Open = Outer.Visible
+
     local InputConnection = InputService.InputBegan:Connect(function(Input, Processed)
         if Input.KeyCode == Enum.KeyCode.RightControl or (Input.KeyCode == Enum.KeyCode.RightShift and (not Processed)) then
-            Outer.Visible = not Outer.Visible;
-            ModalElement.Modal = Outer.Visible;
+            Open = not Open
+            Outer.Visible = Open;
+            ModalElement.Modal = Open;
 
             local Cursor = Drawing.new('Triangle');
             Cursor.Thickness = 1;
             Cursor.Filled = true;
 
-            while Outer.Visible do
+            while Open do
                 local mPos = workspace.CurrentCamera:WorldToViewportPoint(Mouse.Hit.Position);
 
                 Cursor.Color = Library.AccentColor;
@@ -2541,6 +2544,7 @@ function Library:CreateWindow(WindowTitle)
         end
 
         if Outer then
+            Open = false
             Outer:Destroy()
             Outer = nil
         end
