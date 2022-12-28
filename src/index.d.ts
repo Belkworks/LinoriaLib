@@ -102,6 +102,7 @@ interface Window {
 
 	SetWindowTitle(title: string): void;
 	AddTab(title: string): Tab;
+	Destroy(): void;
 }
 
 // LIBRARY

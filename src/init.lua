@@ -788,11 +788,11 @@ do
                         Text = Text .. '.';
                         DisplayLabel.Text = Text;
 
-                        wait(0.4);
+                        task.wait(0.4);
                     end;
                 end);
 
-                wait(0.2);
+                task.wait(0.2);
 
                 local Event;
                 Event = InputService.InputBegan:Connect(function(Input)
@@ -2504,20 +2504,17 @@ function Library:CreateWindow(WindowTitle)
         Parent = ScreenGui;
     });
 
-    InputService.InputBegan:Connect(function(Input, Processed)
+    local InputConnection = InputService.InputBegan:Connect(function(Input, Processed)
         if Input.KeyCode == Enum.KeyCode.RightControl or (Input.KeyCode == Enum.KeyCode.RightShift and (not Processed)) then
             Outer.Visible = not Outer.Visible;
             ModalElement.Modal = Outer.Visible;
-
-            local oIcon = Mouse.Icon;
-            local State = InputService.MouseIconEnabled;
 
             local Cursor = Drawing.new('Triangle');
             Cursor.Thickness = 1;
             Cursor.Filled = true;
 
             while Outer.Visible do
-                local mPos = workspace.CurrentCamera:WorldToViewportPoint(Mouse.Hit.p);
+                local mPos = workspace.CurrentCamera:WorldToViewportPoint(Mouse.Hit.Position);
 
                 Cursor.Color = Library.AccentColor;
                 Cursor.PointA = Vector2.new(mPos.X, mPos.Y);
@@ -2534,6 +2531,18 @@ function Library:CreateWindow(WindowTitle)
     end);
 
     Window.Holder = Outer;
+
+    function Window:Destroy()
+        if InputConnection then
+            InputConnection:Disconnect();
+            InputConnection = nil
+        end
+
+        if Outer then
+            Outer:Destroy()
+            Outer = nil
+        end
+    end
 
     return Window;
 end;
