@@ -30,5 +30,9 @@
     "rimraf": "^3.0.2",
     "tape-lua": "3.1.1-a",
     "typescript": "^4.9.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Belkworks/LinoriaLib.git"
   }
 }
