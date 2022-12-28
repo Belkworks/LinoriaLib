@@ -98,7 +98,7 @@ interface Tab {
 // WINDOW
 
 interface Window {
-	Tabs: Tab[];
+	Tabs: Record<string, Tab>;
 
 	SetWindowTitle(title: string): void;
 	AddTab(title: string): Tab;
