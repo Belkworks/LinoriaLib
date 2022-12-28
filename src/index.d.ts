@@ -74,7 +74,7 @@ type TabboxInfo = Sided & {
 
 // GROUP BOX
 
-interface Groupbox {}
+interface Groupbox extends BaseGroupbox {}
 
 type GroupboxInfo = Sided & {
 	Name: string;
