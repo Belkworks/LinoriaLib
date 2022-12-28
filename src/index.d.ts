@@ -85,6 +85,7 @@ type GroupboxInfo = Sided & {
 interface Tab {
 	Groupboxes: Record<string, Groupbox>;
 	Tabboxes: Record<string, Tabbox>;
+	readonly Button: Frame;
 
 	ShowTab(): void;
 	AddGroupbox(info: GroupboxInfo): Groupbox;

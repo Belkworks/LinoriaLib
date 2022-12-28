@@ -2112,6 +2112,8 @@ function Library:CreateWindow(WindowTitle)
             Parent = TabArea;
         });
 
+        Tab.Button = TabButton;
+
         Library:AddToRegistry(TabButton, {
             BackgroundColor3 = 'BackgroundColor';
             BorderColor3 = 'OutlineColor';
