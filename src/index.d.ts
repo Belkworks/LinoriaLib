@@ -28,9 +28,13 @@ type TextboxInfo = {
 	MaxLength?: number;
 };
 
+// BaseAddons
+
+interface BaseAddons {}
+
 // TOGGLE
 
-interface Toggle {
+interface Toggle extends BaseAddons {
 	Value: boolean;
 	Type: "Toggle";
 
@@ -44,12 +48,22 @@ type ToggleInfo = {
 	BlankSize?: number;
 };
 
+// Button
+
+interface Button {
+	SetText(text: string): void;
+}
+
+// Label
+
+interface Label extends BaseAddons {}
+
 // BASE GROUPBOX
 
 interface BaseGroupbox {
 	AddBlank(height: number): void;
-	AddLabel(text: string): void;
-	AddButton(text: string, callback: Callback): void;
+	AddLabel(text: string): Label;
+	AddButton(text: string, callback: Callback): Button;
 	AddInput(option: string, info: TextboxInfo): Textbox;
 	AddToggle(option: string, info: ToggleInfo): Toggle;
 	// TODO: AddSlider

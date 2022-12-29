@@ -976,6 +976,10 @@ do
             { BorderColor3 = 'Black' }
         );
 
+        function Button:SetText(text)
+            ButtonLabel.Text = text;
+        end
+
         ButtonOuter.InputBegan:Connect(function(Input)
             if Input.UserInputType == Enum.UserInputType.MouseButton1 and not Library:MouseIsOverOpenedFrame() then
                 Func();
